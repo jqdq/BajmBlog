@@ -12,7 +12,9 @@ def scrapuj():
     # Scrapuje teksty utworów
     ####
 
+'''
 def pobierz():
     ####
     # Zwraca listę cytatów
     ####
+'''
