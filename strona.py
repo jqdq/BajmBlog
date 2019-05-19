@@ -1,8 +1,13 @@
 from flask import Flask
+from flask import templating
 from cytaty import poczatek_pracy
+from time import clock
 
-app = Flask(__name__)
+baza = poczatek_pracy()
+start = clock()
 
-@app.route('/')
-def x():
-    return 'elo'
+aplikacja = Flask(__name__)
+
+@aplikacja.route('/')
+def strona_glowna():
+    return 'test'
