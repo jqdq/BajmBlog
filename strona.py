@@ -1,8 +1,15 @@
 from flask import Flask
-from cytaty import poczatek_pracy, scrapuj
+from flask import render_template
+from cytaty import poczatek_pracy
+from time import clock
 
-app = Flask(__name__)
+#generowanie bazy i zegara
+baza = poczatek_pracy()
+start = clock()
 
-@app.route('/')
-def x():
-    return 'elo'
+aplikacja = Flask(__name__)
+
+@aplikacja.route('/')
+def strona_glowna():
+    kiedy = round((clock() - start)/60,0)
+    return render_template('test.html') # zamiast test.html trzeba potem wstawić 
