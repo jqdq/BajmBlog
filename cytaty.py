@@ -15,10 +15,7 @@ def scrapuj(baza):
     ####
     # Scrapuje teksty utworów i dodaje je do bazy
     ####
-    zbior=[]
-    nr+=1
-    ('main', [nr, utwor, cytat])
-    zbior.append(nr)
+    dodaj(baza, (#cytat#,#utwór#))
 '''
 
 def pobierz(kursor,start):
