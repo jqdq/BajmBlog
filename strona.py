@@ -3,15 +3,15 @@ from cytaty import polaczenie, dodaj, pobierz, scrapuj
 from time import clock
 import sqlite3
 
-#generowanie bazy
+# generowanie bazy
 baza = polaczenie()
+baza.execute('DROP TABLE IF EXISTS cytaty')
+baza.execute('DROP TABLE IF EXISTS losowo')
 kursor = baza.cursor()
-kursor.execute('DROP TABLE IF EXISTS cytaty')
-kursor.execute('DROP TABLE IF EXISTS losowo')
 kursor.execute('CREATE TABLE cytaty (tresc text, utwor text)')
 print('Baza utworzona')
 
-#importowanie danych (DANE PRZYKŁADOWE, TU WEJDZIE SCRAPER)
+# importowanie danych
 scrapuj(kursor)
 kursor.execute('CREATE TABLE losowo AS SELECT * FROM cytaty ORDER BY RANDOM()')
 print('Dane zaimportowane')

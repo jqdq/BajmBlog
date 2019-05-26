@@ -16,7 +16,7 @@ def usuwajpuste(lista):
         return nowa
 
 def dodaj(kursor, tresc):
-        if len(tresc)<=400:
+        if len(tresc[0])<=400:
                 kursor.execute('INSERT INTO cytaty (tresc, utwor) VALUES (?,?)', tresc)
 
 def scrapuj(baza):
