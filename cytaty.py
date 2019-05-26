@@ -3,7 +3,7 @@ from random import shuffle
 from time import clock
 
 def polaczenie():
-    baza = sqlite3.connect(':memory:')
+    baza = sqlite3.connect('dane.db')
     return baza
 
 def dodaj(kursor, tresc):

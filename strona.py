@@ -6,8 +6,9 @@ import sqlite3
 #generowanie bazy
 baza = polaczenie()
 kursor = baza.cursor()
+kursor.execute('DROP TABLE IF EXISTS cytaty')
+kursor.execute('DROP TABLE IF EXISTS losowo')
 kursor.execute('CREATE TABLE cytaty (tresc text, utwor text)')
-baza.commit()
 print('Baza utworzona')
 
 #importowanie danych (DANE PRZYKŁADOWE, TU WEJDZIE SCRAPER)
@@ -17,6 +18,8 @@ dodaj(kursor, ('lech','poznań'))
 dodaj(kursor, ('litwa','ojczyzna'))
 kursor.execute('CREATE TABLE losowo AS SELECT * FROM cytaty ORDER BY RANDOM()')
 print('Dane zaimportowane')
+
+baza.commit()
 baza.close()
 
 #Utworzenie serwera
