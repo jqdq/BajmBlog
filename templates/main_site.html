@@ -30,11 +30,10 @@
 
         <center>
             <div class="container">
-                <ul>
-                    {% for n in zmienna %}
-                    <li>{{n[0]}} ~{{n[1]}}</li>
-                    {% endfor %}
-                </ul>
+                {% for n in zmienna %}
+                <p style="color:black" align="left">{{n[0]}}</p>
+                <p style="color:grey; font-style:italic;" align="right">~Bajm - "{{n[1]}}"</p>
+                {% endfor %}
             </div>
         </center>
 
