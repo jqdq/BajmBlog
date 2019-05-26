@@ -8,7 +8,18 @@ def polaczenie():
         baza = sqlite3.connect('dane.db')
         return baza
 
+def usuwajzle(zwrot, listazlych):
+        ####
+        # Usuwa niepożądane znaki/zwroty
+        ####
+        for i in listazlych:
+                zwrot = zwrot.replace(i, '')
+        return zwrot
+
 def usuwajpuste(lista):
+        ####
+        # Usuwa puste linie
+        ####
         nowa=[]
         for i in lista:
                 if not i=='':
@@ -16,7 +27,7 @@ def usuwajpuste(lista):
         return nowa
 
 def dodaj(kursor, tresc):
-        if len(tresc[0])<=400:
+        if len(tresc[0])<=400 and len(tresc[0])>5:
                 kursor.execute('INSERT INTO cytaty (tresc, utwor) VALUES (?,?)', tresc)
 
 def scrapuj(baza):
@@ -37,9 +48,8 @@ def scrapuj(baza):
                 print("Pobieranie tekstu",i)
                 stronka=requests.get(listalinkow[i])
                 obszar = BeautifulSoup(stronka.content,'lxml').find('div',class_='txt border')
-                tekst=str(obszar)
-                tekst=tekst.replace('div class="txt border">','').replace('</div','').replace('\n','').replace('\r','')
-                linijki=usuwajpuste(tekst.split('<br/>'))
+                tekst=usuwajzle(str(obszar), ['div class="txt border">','</div','<','>','\n','\r'])
+                linijki=usuwajpuste(tekst.split('br/'))
                 for j in linijki:
                         dodaj(baza, (j, i))
 
