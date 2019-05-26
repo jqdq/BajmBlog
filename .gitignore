@@ -137,3 +137,6 @@ dmypy.json
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### Database stuff ###
+dane.db
