@@ -3,6 +3,8 @@ from cytaty import polaczenie, dodaj, pobierz, scrapuj
 from time import clock
 import sqlite3
 
+start = clock()
+
 # generowanie bazy
 baza = polaczenie()
 baza.execute('DROP TABLE IF EXISTS cytaty')
@@ -21,7 +23,6 @@ baza.close()
 
 #Utworzenie serwera
 aplikacja = Flask(__name__)
-start = clock()
 
 @aplikacja.route('/')
 def strona_glowna():

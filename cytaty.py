@@ -49,5 +49,5 @@ def pobierz(kursor,start):
         ####
         kiedy = int((clock() - start)//60)
         ilosc = min((kiedy, kursor.execute('SELECT COUNT(*) FROM losowo').fetchone()[0]))
-        wynik = kursor.execute('SELECT * FROM losowo LIMIT (?)', str(ilosc))
+        wynik = kursor.execute('SELECT * FROM losowo LIMIT (?)', (str(ilosc)))
         return wynik.fetchall()
