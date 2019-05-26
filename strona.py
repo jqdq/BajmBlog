@@ -1,5 +1,5 @@
 from flask import Flask, render_template, g, url_for
-from cytaty import polaczenie, dodaj, pobierz
+from cytaty import polaczenie, dodaj, pobierz, scrapuj
 from time import clock
 import sqlite3
 
@@ -12,10 +12,7 @@ kursor.execute('CREATE TABLE cytaty (tresc text, utwor text)')
 print('Baza utworzona')
 
 #importowanie danych (DANE PRZYKŁADOWE, TU WEJDZIE SCRAPER)
-dodaj(kursor, ('pies','kot'))
-dodaj(kursor, ('arka','gdynia'))
-dodaj(kursor, ('lech','poznań'))
-dodaj(kursor, ('litwa','ojczyzna'))
+scrapuj(kursor)
 kursor.execute('CREATE TABLE losowo AS SELECT * FROM cytaty ORDER BY RANDOM()')
 print('Dane zaimportowane')
 
