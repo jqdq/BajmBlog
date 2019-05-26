@@ -1,5 +1,6 @@
 # BajmBlog
 __Zwykły projekt na programowanie niezwykłych ludzi__
+
 Program scrapuje teksty utworów z https://teksciory.interia.pl/, aby następnie co minutę wyświetlać po jednej linii. 
 
 ## Disclaimer
