@@ -139,3 +139,4 @@ dmypy.json
 .history
 
 dane.db
+dane.db-journal
