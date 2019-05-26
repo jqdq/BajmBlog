@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, url_for
 from cytaty import polaczenie, dodaj, pobierz
 from time import clock
 import sqlite3

@@ -138,5 +138,4 @@ dmypy.json
 # Ignore all local history of files
 .history
 
-### Database stuff ###
 dane.db
