@@ -30,12 +30,23 @@ def scrapuj(baza):
     listazaznaczen= drzewunio.findAll('div', class_='artistContent marginRight20')[1].findAll('a',class_='title')
     listalinkow=dict()
     for i in listazaznaczen:
-    listalinkow[i.string]='https://teksciory.interia.pl'+i['href']
-    print("Zakończono zbieranie linków")
+        listalinkow[i.string]='https://teksciory.interia.pl'+i['href']
+        print("Zakończono zbieranie linków")
+    
 
 def pobierz():
     ####
     # Zwraca listę cytatów
     ####
+    #witam tutaj mam zrobione juz pobieranko tekstow pozderki 
+    licznik=0
+    for i in listalinkow:
+        print("Pobieranie tekstu",i)
+        stronka=requests.get(listalinkow[i])
+        tekst=str(BeautifulSoup(strona.content,'lxml').find('div',class='txt border'))
+        tekst=tekst.replace('div class="txt border">','').replace('</div','').replace('\n','').replace('\r','')
+        linijki=usuwajpuste(tekst.split('<br/>'))
+        for j in linijki:
+            liczcznik+=1
 
 
