@@ -31,11 +31,10 @@
 
         <center>
             <div class="container">
-                <ul>
-                    {% for n in zmienna %}
-                    <li>{{n}}</li>
-                    {% endfor %}
-                </ul>
+                {% for n in zmienna %}
+                <p align="left">{{zmienna[0]}}</p>
+                <p align="left">{{zmienna[1]}}</p>
+                {% endfor %}
             </div>
         </center>
 
