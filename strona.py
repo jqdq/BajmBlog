@@ -35,4 +35,4 @@ def strona_glowna():
     db = g.pop('db', None)
     if db is not None:
         db.close()
-    return render_template('main_site.html', zmienne=zwrot)
+    return render_template('main_site.html', zmienna=zwrot)
