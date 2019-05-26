@@ -26,4 +26,4 @@ start = clock()
 @aplikacja.route('/')
 def strona_glowna():
     
-    return render_template('test.html', zmienne=pobierz(kursor, start)) # zamiast test.html trzeba potem wstawić 
+    return render_template(main_page.html, zmienne=pobierz(kursor, start))
