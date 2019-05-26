@@ -5,7 +5,7 @@ from time import clock
 import sqlite3
 
 def polaczenie():
-    baza = sqlite3.connect('baza.db')
+    baza = sqlite3.connect('dane.db')
     return baza
 
 def usuwajpuste(lista):

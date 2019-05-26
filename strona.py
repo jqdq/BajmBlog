@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, g, url_for
 from cytaty import polaczenie, dodaj, pobierz
 from time import clock
 import sqlite3
@@ -7,8 +6,9 @@ import sqlite3
 #generowanie bazy
 baza = polaczenie()
 kursor = baza.cursor()
+kursor.execute('DROP TABLE IF EXISTS cytaty')
+kursor.execute('DROP TABLE IF EXISTS losowo')
 kursor.execute('CREATE TABLE cytaty (tresc text, utwor text)')
-baza.commit()
 print('Baza utworzona')
 
 #importowanie danych (DANE PRZYKŁADOWE, TU WEJDZIE SCRAPER)
@@ -19,10 +19,20 @@ dodaj(kursor, ('litwa','ojczyzna'))
 kursor.execute('CREATE TABLE losowo AS SELECT * FROM cytaty ORDER BY RANDOM()')
 print('Dane zaimportowane')
 
+baza.commit()
+baza.close()
+
 #Utworzenie serwera
 aplikacja = Flask(__name__)
 start = clock()
 
 @aplikacja.route('/')
 def strona_glowna():
-    return render_template('test.html', zmienne=pobierz(kursor, start)) # zamiast test.html trzeba potem wstawić 
+    if not 'db' in g:
+        g.db = polaczenie()
+    kursor = g.db.cursor()
+    zwrot = pobierz(kursor, start)
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+    return render_template('main_site.html', zmienna=zwrot)

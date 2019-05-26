@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            img {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+                }
+        </style>
+    </head>
+
+    <body style="background-color:#ff3399;">
+
+        <style>
+            div {
+                width: 450px;
+                background-color: white;
+                margin-top: 20px;
+                padding-top: 20px;
+                padding-right: 20px;
+                padding-bottom: 20px;
+                padding-left: 20px;
+                border-width: 5px;
+                border-style: groove;
+                border-color: #7cf718;
+                }
+        </style>
+
+        <img src="{{url_for('static', filename='bajmblog.gif')}}" alt="logo bajmblog" width="1000" height="200">
+
+        <center>
+            <div class="container">
+                <ul>
+                    {% for n in zmienna %}
+                    <li>{{n}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </center>
+
+    </body>
+</html>
