@@ -31,9 +31,11 @@
 
         <center>
             <div class="container">
-              
-            #a tu miejsce do wywołania właściwego kodu  
-              
+                <ul>
+                    {% for n in lista %} #potrzebna właściwa nazwa listy
+                    <li>{{n}}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </center>
 
