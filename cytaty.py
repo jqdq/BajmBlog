@@ -1,7 +1,7 @@
 from random import shuffle
 import requests
 from bs4 import BeautifulSoup
-from time import clock
+from time import clock, sleep
 import sqlite3
 
 def polaczenie():
@@ -46,7 +46,15 @@ def scrapuj(baza):
         for i in listalinkow:
                 # upload linii #
                 print("Pobieranie tekstu",i)
-                stronka=requests.get(listalinkow[i])
+                while True:
+                        try:
+                                stronka=requests.get(listalinkow[i])
+                        except:
+                                print('Błąd połączenia, ponawianie za 2 sekundy')
+                                sleep(2)
+                                continue
+                        else:
+                                break
                 obszar = BeautifulSoup(stronka.content,'lxml').find('div',class_='txt border')
                 tekst=usuwajzle(str(obszar), ['div class="txt border">','</div','<','>','\n','\r'])
                 linijki=usuwajpuste(tekst.split('br/'))
